@@ -27,6 +27,13 @@ export class ProductsController {
     return this.productsService.create(createProductDto);
   }
 
+  @MessagePattern({
+    cmd: 'validate_products',
+  })
+  validateProduct(@Payload() ids: number[]) {
+    return this.productsService.validateProducts(ids);
+  }
+
   // @Get()
   @MessagePattern({
     cmd: 'find_all_products',
