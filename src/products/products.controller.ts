@@ -29,7 +29,7 @@ export class ProductsController {
 
   // @Get()
   @MessagePattern({
-    cmd: 'find_all',
+    cmd: 'find_all_products',
   })
   findAll(@Payload() PaginationDto: PaginationDto) {
     return this.productsService.findAll(PaginationDto);
