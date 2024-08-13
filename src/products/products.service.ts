@@ -1,10 +1,4 @@
-import {
-  HttpStatus,
-  Injectable,
-  Logger,
-  NotFoundException,
-  OnModuleInit,
-} from '@nestjs/common';
+import { HttpStatus, Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaClient } from '@prisma/client';
@@ -39,12 +33,12 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
         message: 'Some products not found',
         status: HttpStatus.BAD_REQUEST,
       });
-    } 
+    }
     return products;
   }
   async findAll(PaginationDto: PaginationDto) {
     const { page, limit } = PaginationDto;
-    console.log({page, limit})
+    console.log({ page, limit });
     const totalPages = await this.product.count({
       where: {
         available: true,
